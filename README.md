@@ -15,21 +15,7 @@ Teapot began as an Objective-C++ Cocoa application for a project in Advanced Com
 
 ## How to Use
 
-The Teapot executable expects to find several support files in the parent directory of the build directory. After building, the directory structure on my machine looks like this:
-
-```
-CMakeLists.txt
-README.md
-build/                     - build directory
-   \- [Teapot executable]  - the executable within the build directory
-bunny_surface0.norm        - bunny surface normals
-teapot_surface0.norm       - teapot surface normals
-earth_2k.jpg               - earth texture
-sample1080.png
-[ more source files and directories: *.h and *.cpp, mainwindow.ui ]
-```
-
-If your build environment places the `build` directory somewhere else, you will need to copy or move the three files\* to the same directory as the build directory. This was the easier option rather than asking the user to locate the files every time the application is run.
+The Teapot executable expects to find three data files in the project directory.\* If the project directory is moved, the executable will need to be recompiled.
 
 \* The three files are: bunny_surface0.norm, teapot_surface0.norm, and earth_2k.jpg.
 
