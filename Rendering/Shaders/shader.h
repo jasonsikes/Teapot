@@ -71,7 +71,7 @@ struct ImageShader : public Shader {
 
     // Loads the image from the given path. The image is expected to be in the
     // same directory as the build folder.
-    ImageShader(QString imagePath);
+    ImageShader(QString filename);
 
     RGBA applyShader(HitRecord *rec) const override;
 };

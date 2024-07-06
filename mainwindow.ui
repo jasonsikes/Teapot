@@ -138,7 +138,7 @@
   <customwidget>
    <class>RenderView</class>
    <extends>QWidget</extends>
-   <header>/Users/jsikes/Projects_phantom/Teapot/renderview.h</header>
+   <header>renderview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

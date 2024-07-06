@@ -3,6 +3,7 @@
 #include "renderview.h"
 #include <QLabel>
 #include <QFileDialog>
+#include <QMessageBox>
 
 // The MainWindow class is the main window of the application.
 // In Qt, the main window is the controller.
@@ -107,6 +108,9 @@ void MainWindow::renderingHasEnded()
 
 void MainWindow::beginRender()
 {
+    if ( ! canFindSupportFiles())
+        return;
+
     int imageRows = ui->rowsField->text().toInt();
     int imageColumns = imageRows * 16 / 9; // Keep 1920 x 1080 ratio
     ui->widget->image = QImage(imageColumns, imageRows, QImage::Format_RGB32);
@@ -117,4 +121,19 @@ void MainWindow::beginRender()
 
     ui->widget->image.fill(Qt::lightGray);
     renderer->beginRendering();
+}
+
+
+bool MainWindow::canFindSupportFiles()
+{
+    QString prefix = FIND_FILES;
+    bool canFindFiles = QFile::exists(prefix + "/" + "bunny_surface0.norm")
+        && QFile::exists(prefix + "/" + "teapot_surface0.norm")
+      && QFile::exists(prefix + "/" + "earth_2k.jpg");
+    if ( ! canFindFiles) {
+        QString message = "Unable to find support files. Please ensure that the "
+           "bunny_surface0.norm, teapot_surface0.norm, and earth_2k.jpg files are in %1";
+        QMessageBox::critical(this, "Error", message.arg(FIND_FILES));
+    }
+    return canFindFiles;
 }

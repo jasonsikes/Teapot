@@ -55,7 +55,7 @@ public:
     QVector3D scale;
 
     TriangleReader();
-    QList<QList<Triangle> > readTriangles(QString filePath);
+    QList<QList<Triangle> > readTriangles(QString fileName);
 
 };
 

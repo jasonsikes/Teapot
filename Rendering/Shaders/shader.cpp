@@ -31,8 +31,9 @@ RGBA GradientShader :: applyShader(HitRecord *rec) const
     return color1->applyShader(rec) * t + color2->applyShader(rec) * (1 - t);
 }
 
-ImageShader :: ImageShader(QString imagePath)
+ImageShader :: ImageShader(QString filename)
 {
+    QString imagePath = QString(FIND_FILES) + "/" + filename;
     image = QImage(imagePath);
     if (image.isNull()) {
         qDebug() << "Failed to load image: " << imagePath;

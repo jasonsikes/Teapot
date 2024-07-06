@@ -5,11 +5,11 @@
 
 TriangleReader::TriangleReader() {}
 
-QList<QList<Triangle> > TriangleReader::readTriangles(QString filePath) {
+QList<QList<Triangle> > TriangleReader::readTriangles(QString fileName) {
+    QString filePath = QString(FIND_FILES) + "/" + fileName;
     QFile file(filePath);
     if ( ! file.open(QIODevice::ReadOnly)) {
         qDebug() << "Failed to open file" << filePath;
-        qDebug() <<"Searched for file in" << QDir::currentPath();
         return QList<QList<Triangle> >();
     }
 

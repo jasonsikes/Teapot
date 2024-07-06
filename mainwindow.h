@@ -27,6 +27,8 @@ class MainWindow : public QMainWindow
     // Call to kick off rendering
     void beginRender();
 
+    bool canFindSupportFiles();
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

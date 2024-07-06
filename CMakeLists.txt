@@ -9,10 +9,11 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# TODO: destroy before publishing
-set(CMAKE_PREFIX_PATH "/opt/Qt/6.5.1/macos")
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+add_compile_definitions(FIND_FILES="${CMAKE_CURRENT_SOURCE_DIR}")
 
 set(PROJECT_SOURCES
         main.cpp
