@@ -2,11 +2,11 @@
 
 #include "QtCore/qdebug.h"
 #include "QtGui/qguiapplication.h"
-#include "Shaders/light.h"
-#include "Shaders/shader.h"
+#include "Textures/light.h"
+#include "Textures/texture.h"
 #include "scene.h"
 #include "Objects/shape.h"
-#include "Shaders/texture.h"
+#include "Textures/shader.h"
 #include <QDebug>
 
 // Some support functions
@@ -93,8 +93,8 @@ RGBA Raytracer::traceRay(Ray r, int depth, bool rayIsInside)
         }
 
         // Reflection and transmission are determined by the brightness of the colors.
-        reflectionProportion = rec.hitObject->getReflection()->applyShader(&rec).value();
-        transmissionProportion = rec.hitObject->getTransparency()->applyShader(&rec).value();
+        reflectionProportion = rec.hitObject->getReflection()->applyTexture(&rec).value();
+        transmissionProportion = rec.hitObject->getTransparency()->applyTexture(&rec).value();
 
         if (transmissionProportion > 0.01f) {
             int tDepth = depth;
@@ -145,14 +145,14 @@ RGBA Raytracer::traceRay(Ray r, int depth, bool rayIsInside)
         }
     }
 
-    iLocal = rec.hitObject->getShader()->applyShader(&rec);
-    iLocal = rec.hitObject->getTexture()->applyDiffuse(iLocal, rec, rDirection, scene->lights, directLights);
+    iLocal = rec.hitObject->getTexture()->applyTexture(&rec);
+    iLocal = rec.hitObject->getShader()->applyDiffuse(iLocal, rec, rDirection, scene->lights, directLights);
 
     iLocal = iLocal * (1 - transmissionProportion) + iTransmit * transmissionProportion;
     iLocal = iLocal * (1 - reflectionProportion) + iReflect * reflectionProportion;
 
 
-    iLocal = rec.hitObject->getTexture()->applySpecular(iLocal, rec, rDirection, scene->lights, directLights);
+    iLocal = rec.hitObject->getShader()->applySpecular(iLocal, rec, rDirection, scene->lights, directLights);
 
     return iLocal;
 

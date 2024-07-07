@@ -10,14 +10,14 @@ Triangle::Triangle(const QVector3D & _p0,
                    const QVector3D & _n0,
                    const QVector3D & _n1,
                    const QVector3D & _n2,
-                   const Texture *_texture,
                    const Shader *_shader,
-                   const Shader *_reflection,
+                   const Texture *_texture,
+                   const Texture *_reflection,
                    float _indexOfRefraction,
-                   const Shader * _transparency)
+                   const Texture * _transparency)
     : p0(_p0), p1(_p1), p2(_p2), t0(_t0), t1(_t1), t2(_t2)
     , n0(_n0.normalized()), n1(_n1.normalized()), n2(_n2.normalized())
-    , texture(_texture), reflection(_reflection), shader(_shader),
+    , shader(_shader), reflection(_reflection), texture(_texture),
     indexOfRefraction(_indexOfRefraction), transparency(_transparency)
 {}
 
@@ -27,13 +27,13 @@ Triangle::Triangle(const QVector3D & _p0,
                    const QVector2D & _t0,
                    const QVector2D & _t1,
                    const QVector2D & _t2,
-                   const Texture *_texture,
                    const Shader *_shader,
-                   const Shader *_reflection,
+                   const Texture *_texture,
+                   const Texture *_reflection,
                    float _indexOfRefraction,
-                   const Shader *_transparency)
+                   const Texture *_transparency)
     : p0(_p0), p1(_p1), p2(_p2), t0(_t0), t1(_t1), t2(_t2)
-    , texture(_texture), reflection(_reflection), shader(_shader),
+    , shader(_shader), reflection(_reflection), texture(_texture),
     indexOfRefraction(_indexOfRefraction), transparency(_transparency)
 {
     n0 = n1 = n2 = QVector3D::normal(p0,p1,p2);
@@ -103,22 +103,22 @@ void Triangle::processHit(const Ray & r, HitRecord &record) const
 }
 
 
-const Texture * Triangle :: getTexture() const
-{
-    return texture;
-}
-
 const Shader * Triangle :: getShader() const
 {
     return shader;
 }
 
-const Shader * Triangle :: getReflection() const
+const Texture * Triangle :: getTexture() const
+{
+    return texture;
+}
+
+const Texture * Triangle :: getReflection() const
 {
     return reflection;
 }
 
-const Shader * Triangle :: getTransparency() const
+const Texture * Triangle :: getTransparency() const
 {
     return transparency;
 }

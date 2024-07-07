@@ -3,7 +3,7 @@
 #include "Objects/plane.h"
 #include "Objects/triangle.h"
 #include "Objects/trianglegroup.h"
-#include "Shaders/light.h"
+#include "Textures/light.h"
 #include "trianglereader.h"
 
 
@@ -13,11 +13,11 @@ Scene::Scene() {
         {-1.02,.02,.52},
         {0,1,0},
         1,
-        &marbleTexture,
-        &marbleShader1,
-        &whiteShader,
+        &marbleShader,
+        &marbleTexture1,
+        &whiteTexture,
         1.5,
-        &nothingShader
+        &nothingTexture
         );
 
 
@@ -25,11 +25,11 @@ Scene::Scene() {
         {1.02,.02,.52},
         {0,1,0},
         1,
-        &marbleTexture,
-        &marbleShader2,
-        &whiteShader,
+        &marbleShader,
+        &marbleTexture2,
+        &whiteTexture,
         1.5,
-        &nothingShader
+        &nothingTexture
         );
 
     // New Spheres with interesting patterns
@@ -37,66 +37,66 @@ Scene::Scene() {
         {-1, .02, -18},
         {1, .33, 0},
         1,
-        &marbleTexture,
-        &checkerboardShader,
-        &nothingShader,
+        &marbleShader,
+        &checkerboardTexture,
+        &nothingTexture,
         1.5,
-        &nothingShader
+        &nothingTexture
         );
 
     Sphere *earthSphere = new Sphere(
         {-14.04, 1.02, -5},
         {0.75, 0.25, .25},
         3,
-        &marbleTexture,
-        &earthShader,
-        &nothingShader,
+        &marbleShader,
+        &earthTexture,
+        &nothingTexture,
         1.5,
-        &nothingShader
+        &nothingTexture
         );
 
     Sphere *swirlSphere = new Sphere(
         {-2, .02, -12},
         {1, 0, 0},
         1,
-        &marbleTexture,
-        &swirlShader,
-        &nothingShader,
+        &marbleShader,
+        &swirlTexture,
+        &nothingTexture,
         1.5,
-        &nothingShader
+        &nothingTexture
         );
 
     Sphere *gradientSphere = new Sphere(
         {-5.04,0.02,-14},
         {0.1, 0.4, 1},
         1,
-        &marbleTexture,
-        &gradientShader,
-        &nothingShader,
+        &marbleShader,
+        &gradientTexture,
+        &nothingTexture,
         1.5,
-        &nothingShader
+        &nothingTexture
         );
 
     Sphere *crystalSphere = new Sphere(
         {1.42, .02, -6.0},
         {0, 1, 0},
         1,
-        &marbleTexture,
-        &blackShader,
-        &nothingShader,
+        &marbleShader,
+        &blackTexture,
+        &nothingTexture,
         1.5,
-        &allShader
+        &allTexture
         );
 
     Water *water = new Water(
         {1,0,0},
         {0,0,1},
         {0, -1.6, 0},
-        &floorTexture,
-        &blueShader,
-        &whiteShader,
+        &floorShader,
+        &blueTexture,
+        &whiteTexture,
         1,
-        &nothingShader
+        &nothingTexture
         );
 
 
@@ -124,27 +124,27 @@ Scene::Scene() {
     const QVector2D table_t2(ttv,ttu);
     const QVector2D table_t3(0,ttu);
 
-    const Texture &tableTexture = floorTexture;
-    const Shader &tableShader = brickShader;
-    const Shader &tableReflection = brickReflectionShader;
+    const Shader &tableShader = floorShader;
+    const Texture &tableTexture = brickTexture;
+    const Texture &tableReflection = brickReflectionTexture;
     float tableRefraction = 1;
-    const Shader &tableTransparency = nothingShader;
+    const Texture &tableTransparency = nothingTexture;
 
     Triangle *table1 = new Triangle(table_p0, table_p1, table_p2,
                                     table_t0, table_t1, table_t2,
-                                    &tableTexture, &tableShader, &tableReflection,
+                                    &tableShader, &tableTexture, &tableReflection,
                                     tableRefraction, &tableTransparency);
     Triangle *table2 = new Triangle(table_p0, table_p2, table_p3,
                                     table_t0, table_t2, table_t3,
-                                    &tableTexture, &tableShader, &tableReflection,
+                                    &tableShader, &tableTexture, &tableReflection,
                                     tableRefraction, &tableTransparency);
     Triangle *table3 = new Triangle(table_p1, table_p4, table_p2,
                                     table_t1, table_t3, table_t2,
-                                    &tableTexture, &tableShader, &tableReflection,
+                                    &tableShader, &tableTexture, &tableReflection,
                                     tableRefraction, &tableTransparency);
     Triangle *table4 = new Triangle(table_p1, table_p5, table_p4,
                                     table_t1, table_t0, table_t3,
-                                    &tableTexture, &tableShader, &tableReflection,
+                                    &tableShader, &tableTexture, &tableReflection,
                                     tableRefraction, &tableTransparency);
 
 
@@ -199,10 +199,10 @@ Scene::Scene() {
     TriangleReader reader;
 
     // The Utah Teapot
-    reader.texture = &marbleTexture;
-    reader.shader = &whitePurpleSwirlShader;
-    reader.reflection = &blackShader;
-    reader.transparency = &nothingShader;
+    reader.shader = &marbleShader;
+    reader.texture = &whitePurpleSwirlTexture;
+    reader.reflection = &blackTexture;
+    reader.transparency = &nothingTexture;
     reader.indexOfRefraction = 1.02;
     reader.scale = {1,1,1};
     reader.translation = {-5, -0.97, 0};
@@ -211,10 +211,10 @@ Scene::Scene() {
         shapes.push_back(new TriangleGroup(t));
 
     // The Stanford Bunny
-    reader.texture = &marbleTexture;
-    reader.shader = &blueShader;
-    reader.reflection = &blackShader;
-    reader.transparency = &nothingShader;
+    reader.shader = &marbleShader;
+    reader.texture = &blueTexture;
+    reader.reflection = &blackTexture;
+    reader.transparency = &nothingTexture;
     reader.indexOfRefraction = 1.2;
     reader.scale = {5, 5, 5};
     reader.translation = {5.5, 1.55, -1};

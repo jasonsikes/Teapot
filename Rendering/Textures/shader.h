@@ -9,19 +9,19 @@
 
 class Light;
 
-// The parent class for textures. Currently, only PhongTexture is implemented.
-struct Texture
+// The parent class for shaders. Currently, only PhongShader is implemented.
+struct Shader
 {
     virtual RGBA applyDiffuse(RGBA sourceColor, HitRecord &rec, const QVector3D &_eye,
                              const QList<Light *> &ambientLights, const QList<Light *> &directLights) const = 0;
     virtual RGBA applySpecular(RGBA sourceColor, HitRecord &rec, const QVector3D &_eye,
                               const QList<Light *> &ambientLights, const QList<Light *> &directLights) const = 0;
-    virtual ~Texture() {}
+    virtual ~Shader() {}
 };
 
-struct PhongTexture : public Texture
+struct PhongShader : public Shader
 {
-    PhongTexture(float _shininess);
+    PhongShader(float _shininess);
     RGBA applyDiffuse(RGBA sourceColor, HitRecord &rec, const QVector3D &_eye,
                      const QList<Light *> &ambientLights, const QList<Light *> &directLights) const;
     RGBA applySpecular(RGBA sourceColor, HitRecord &rec, const QVector3D &_eye,

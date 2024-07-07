@@ -1,11 +1,11 @@
-#include "brickwallshader.h"
+#include "brickwalltexture.h"
 #include "../Objects/shape.h"
 
-BrickWallShader :: BrickWallShader(const Shader *_brickShader, const Shader *_mortarShader, QVector2D _brickSize, QVector2D _brickPct)
-    :brickShader(_brickShader), mortarShader(_mortarShader), brickSize(_brickSize), brickPct(_brickPct)
+BrickWallTexture :: BrickWallTexture(const Texture *_brickTexture, const Texture *_mortarTexture, QVector2D _brickSize, QVector2D _brickPct)
+    :brickTexture(_brickTexture), mortarTexture(_mortarTexture), brickSize(_brickSize), brickPct(_brickPct)
 { }
 
-RGBA BrickWallShader :: applyShader(HitRecord *rec) const
+RGBA BrickWallTexture :: applyTexture(HitRecord *rec) const
 {
     QVector2D position(rec->uv.x() / brickSize.x(), rec->uv.y() / brickSize.y());
     if ((position.x() / 2 - floorf(position.x() / 2)) > 0.5)
@@ -16,6 +16,6 @@ RGBA BrickWallShader :: applyShader(HitRecord *rec) const
 
     bool useBrick = (position.x() < brickPct.x()) && (position.y() < brickPct.y());
     if (useBrick)
-        return brickShader->applyShader(rec);
-    return mortarShader->applyShader(rec);
+        return brickTexture->applyTexture(rec);
+    return mortarTexture->applyTexture(rec);
 }

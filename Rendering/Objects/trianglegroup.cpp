@@ -28,22 +28,22 @@ void TriangleGroup :: processHit(const Ray & r, HitRecord &record) const
     assert(false);
 }
 
-const Texture * TriangleGroup :: getTexture() const
-{
-    return texture;
-}
-
 const Shader * TriangleGroup :: getShader() const
 {
     return shader;
 }
 
-const Shader * TriangleGroup :: getReflection() const
+const Texture * TriangleGroup :: getTexture() const
+{
+    return texture;
+}
+
+const Texture * TriangleGroup :: getReflection() const
 {
     return reflection;
 }
 
-const Shader * TriangleGroup :: getTransparency() const
+const Texture * TriangleGroup :: getTransparency() const
 {
     return transparency;
 }

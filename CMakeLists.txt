@@ -38,20 +38,20 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Rendering/Core/rng.h
         Rendering/Objects/shape.h
         Rendering/Objects/sphere.h Rendering/Objects/sphere.cpp
-        Rendering/Shaders/shader.h
-        Rendering/Shaders/light.h
-        Rendering/Shaders/texture.h Rendering/Shaders/texture.cpp
+        Rendering/Textures/texture.h
+        Rendering/Textures/light.h
+        Rendering/Textures/shader.h Rendering/Textures/shader.cpp
         Rendering/Objects/plane.h Rendering/Objects/plane.cpp
-        Rendering/Shaders/shader.cpp
+        Rendering/Textures/texture.cpp
         Rendering/Objects/bbox.h Rendering/Objects/bbox.cpp
         Rendering/Objects/triangle.h Rendering/Objects/triangle.cpp
         Rendering/Objects/trianglegroup.h Rendering/Objects/trianglegroup.cpp
 
         Rendering/trianglereader.h Rendering/trianglereader.cpp
-        Rendering/Shaders/solidnoise.h Rendering/Shaders/solidnoise.cpp
-        Rendering/Shaders/noiseshader.h Rendering/Shaders/noiseshader.cpp
-        Rendering/Shaders/marbleshader.h Rendering/Shaders/marbleshader.cpp
-        Rendering/Shaders/brickwallshader.h Rendering/Shaders/brickwallshader.cpp
+        Rendering/Textures/solidnoise.h Rendering/Textures/solidnoise.cpp
+        Rendering/Textures/noisetexture.h Rendering/Textures/noisetexture.cpp
+        Rendering/Textures/marbletexture.h Rendering/Textures/marbletexture.cpp
+        Rendering/Textures/brickwalltexture.h Rendering/Textures/brickwalltexture.cpp
 
     )
 # Define target properties for Android with Qt 6 as:

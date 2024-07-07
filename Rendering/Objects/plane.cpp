@@ -4,12 +4,12 @@
 Plane::Plane(const QVector3D & _vVec,
              const QVector3D & _uVec,
              const QVector3D & _point,
-             const Texture *_texture,
              const Shader *_shader,
-             const Shader *_reflection,
+             const Texture *_texture,
+             const Texture *_reflection,
              float _indexOfRefraction,
-             const Shader * _transparency)
-    : vVec(_vVec), uVec(_uVec), point(_point), texture(_texture), reflection(_reflection), shader(_shader),
+             const Texture * _transparency)
+    : vVec(_vVec), uVec(_uVec), point(_point), shader(_shader), reflection(_reflection), texture(_texture),
     uNorm(_uVec.normalized()), vNorm(_vVec.normalized()), indexOfRefraction(_indexOfRefraction), transparency(_transparency)
 {
     normal = QVector3D::crossProduct(uNorm, vNorm);
@@ -44,21 +44,21 @@ void Plane::processHit(const Ray & r, HitRecord &record) const
 }
 
 
-const Texture * Plane :: getTexture() const
+const Shader * Plane :: getShader() const
 {
-    return texture;
+    return shader;
 }
 
 
-const Shader * Plane :: getReflection() const
+const Texture * Plane :: getReflection() const
 {
     return reflection;
 }
 
 
-const Shader * Plane :: getShader() const
+const Texture * Plane :: getTexture() const
 {
-    return shader;
+    return texture;
 }
 
 
@@ -68,7 +68,7 @@ float Plane::getIndexOfRefraction() const
 }
 
 
-const Shader * Plane::getTransparency() const
+const Texture * Plane::getTransparency() const
 {
     return transparency;
 }

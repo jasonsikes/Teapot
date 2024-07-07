@@ -4,8 +4,8 @@
 #include <QVector3D>
 
 class Ray;
-class Texture;
 class Shader;
+class Texture;
 class Shape;
 
 /// \brief Store information about a ray intersection with a shape.
@@ -23,7 +23,7 @@ struct HitRecord
 /// \brief An abstract base class for all shapes in the rendering system.
 /// It contains pure virtual functions that must be implemented by any derived
 /// class. These functions include hit detection, shadow hit detection,
-/// processing hits, and retrieving various properties such as texture, shader,
+/// processing hits, and retrieving various properties such as shader, texture,
 /// reflection, index of refraction, and transparency.
 struct Shape
 {
@@ -31,13 +31,13 @@ struct Shape
     virtual bool hit(const Ray &r, float tmin, float tmax, HitRecord & record) const = 0;
     virtual bool shadowHit(const Ray & r, float tmin, float tmax) const = 0;
     virtual void processHit(const Ray &r,HitRecord &record) const = 0;
-    virtual const Texture * getTexture() const = 0;
-    virtual const Shader *getShader() const = 0;
-    virtual const Shader * getReflection() const = 0;
+    virtual const Shader * getShader() const = 0;
+    virtual const Texture *getTexture() const = 0;
+    virtual const Texture * getReflection() const = 0;
     virtual float getIndexOfRefraction() const = 0;
 
-    // TODO: transparency should be the alpha component of getShader.
-    virtual const Shader * getTransparency() const = 0;
+    // TODO: transparency should be the alpha component of getTexture.
+    virtual const Texture * getTransparency() const = 0;
 };
 
 

@@ -11,11 +11,11 @@ struct Triangle : public Shape
     QVector2D t0, t1, t2;
     QVector3D n0, n1, n2;
     float indexOfRefraction;
-    const Shader *transparency;
+    const Texture *transparency;
 
-    const Texture *texture;
     const Shader *shader;
-    const Shader *reflection;
+    const Texture *texture;
+    const Texture *reflection;
 
     Triangle(const QVector3D & _p0,
              const QVector3D & _p1,
@@ -26,11 +26,11 @@ struct Triangle : public Shape
              const QVector3D & _n0,
              const QVector3D & _n1,
              const QVector3D & _n2,
-             const Texture *_texture,
              const Shader *_shader,
-             const Shader *_reflection,
+             const Texture *_texture,
+             const Texture *_reflection,
              float _indexOfRefraction,
-             const Shader *_transparency);
+             const Texture *_transparency);
 
     // Calculate the normal via cross-product
     Triangle(const QVector3D & _p0,
@@ -39,21 +39,21 @@ struct Triangle : public Shape
              const QVector2D & _t0,
              const QVector2D & _t1,
              const QVector2D & _t2,
-             const Texture *_texture,
              const Shader *_shader,
-             const Shader *_reflection,
+             const Texture *_texture,
+             const Texture *_reflection,
              float _indexOfRefraction,
-             const Shader *_transparency);
+             const Texture *_transparency);
 
 
     bool hit(const Ray & r, float tmin, float tmax, HitRecord & record) const;
     bool shadowHit(const Ray & r, float tmin, float tmax) const;
     void processHit(const Ray & r, HitRecord &record) const;
-    const Texture * getTexture() const;
     const Shader * getShader() const;
-    const Shader * getReflection() const;
+    const Texture * getTexture() const;
+    const Texture * getReflection() const;
     float getIndexOfRefraction() const;
-    const Shader * getTransparency() const;
+    const Texture * getTransparency() const;
 };
 
 #endif // TRIANGLE_H

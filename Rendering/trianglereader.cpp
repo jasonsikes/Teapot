@@ -44,7 +44,7 @@ QList<QList<Triangle> > TriangleReader::readTriangles(QString fileName) {
 // The vertices are in the format {x, y, z}, the normals are in the format {x, y, z}.
 // The normals may not be normalized.
 Triangle TriangleReader::readTriangle() {
-    // A temporary texture uv coordinate. We will calculate it later.
+    // A temporary shader uv coordinate. We will calculate it later.
     static QVector2D tempUV = QVector2D(0, 0);
     QVector3D v1 = readVector3D();
     QVector3D n1 = readVector3D();
@@ -59,7 +59,7 @@ Triangle TriangleReader::readTriangle() {
     return Triangle(v1, v2, v3,
                    tempUV, tempUV, tempUV,
                    n1, n2, n3,
-                   texture, shader, reflection, indexOfRefraction, transparency);
+                   shader, texture, reflection, indexOfRefraction, transparency);
 }
 
 

@@ -9,29 +9,29 @@ struct Sphere : public Shape
     QVector3D center;
     QVector3D orientation;
     float radius;
-    const Texture *texture;
     const Shader *shader;
-    const Shader *reflection;
+    const Texture *texture;
+    const Texture *reflection;
     float indexOfRefraction;
-    const Shader *transparency;
+    const Texture *transparency;
 
     Sphere(const QVector3D & _center,
            const QVector3D & _orientation,
            float _radius,
-           const Texture *_texture,
            const Shader *_shader,
-           const Shader *_reflection,
+           const Texture *_texture,
+           const Texture *_reflection,
            float _indexOfRefraction,
-           const Shader *_transparency);
+           const Texture *_transparency);
 
     bool hit(const Ray & r, float tmin, float tmax, HitRecord & record) const;
     bool shadowHit(const Ray & r, float tmin, float tmax) const;
     void processHit(const Ray & r, HitRecord &record) const;
-    const Texture * getTexture() const;
     const Shader * getShader() const;
-    const Shader * getReflection() const;
+    const Texture * getTexture() const;
+    const Texture * getReflection() const;
     float getIndexOfRefraction() const;
-    const Shader * getTransparency() const;
+    const Texture * getTransparency() const;
 };
 
 #endif // SPHERE_H

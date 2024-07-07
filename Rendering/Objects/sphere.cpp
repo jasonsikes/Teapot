@@ -6,13 +6,13 @@
 Sphere::Sphere(const QVector3D & _center,
                const QVector3D & _orientation,
                float _radius,
-               const Texture *_texture,
                const Shader *_shader,
-               const Shader *_reflection,
+               const Texture *_texture,
+               const Texture *_reflection,
                float _indexOfRefraction,
-               const Shader *_transparency)
-    : center(_center), orientation(_orientation), radius(_radius), texture(_texture), reflection(_reflection),
-    shader(_shader), indexOfRefraction(_indexOfRefraction), transparency(_transparency)
+               const Texture *_transparency)
+    : center(_center), orientation(_orientation), radius(_radius), shader(_shader), reflection(_reflection),
+    texture(_texture), indexOfRefraction(_indexOfRefraction), transparency(_transparency)
 { }
 
 
@@ -60,19 +60,19 @@ void Sphere::processHit(const Ray & r, HitRecord &record) const
 }
 
 
-const Texture * Sphere :: getTexture() const
-{
-    return texture;
-}
-
-
 const Shader * Sphere :: getShader() const
 {
     return shader;
 }
 
 
-const Shader * Sphere :: getReflection() const
+const Texture * Sphere :: getTexture() const
+{
+    return texture;
+}
+
+
+const Texture * Sphere :: getReflection() const
 {
     return reflection;
 }
@@ -84,7 +84,7 @@ float Sphere::getIndexOfRefraction() const
 }
 
 
-const Shader * Sphere::getTransparency() const
+const Texture * Sphere::getTransparency() const
 {
     return transparency;
 }

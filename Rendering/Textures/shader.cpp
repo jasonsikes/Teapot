@@ -1,12 +1,12 @@
-#include "texture.h"
+#include "shader.h"
 #include "light.h"
 
-PhongTexture :: PhongTexture(float _shininess)
+PhongShader :: PhongShader(float _shininess)
     :shininess(_shininess)
 { }
 
 
-RGBA PhongTexture :: applyDiffuse(RGBA sourceColor, HitRecord &rec, const QVector3D &_eye,
+RGBA PhongShader :: applyDiffuse(RGBA sourceColor, HitRecord &rec, const QVector3D &_eye,
                                 const QList<Light *> &ambientLights, const QList<Light *> &directLights) const
 {
     RGBA iLocal(0,0,0,1);
@@ -27,7 +27,7 @@ RGBA PhongTexture :: applyDiffuse(RGBA sourceColor, HitRecord &rec, const QVecto
     return iLocal;
 }
 
-RGBA PhongTexture :: applySpecular(RGBA sourceColor, HitRecord &rec, const QVector3D &_eye,
+RGBA PhongShader :: applySpecular(RGBA sourceColor, HitRecord &rec, const QVector3D &_eye,
                                  const QList<Light *> &ambientLights, const QList<Light *> &directLights) const
 {
     RGBA iLocal(sourceColor);

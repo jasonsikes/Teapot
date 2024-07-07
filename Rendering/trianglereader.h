@@ -46,11 +46,11 @@ class TriangleReader
 public:
 
     // SET THESE VALUES BEFORE CALLING readTriangles()!!!
-    const Texture *texture;
     const Shader *shader;
-    const Shader *reflection;
+    const Texture *texture;
+    const Texture *reflection;
     float indexOfRefraction;
-    const Shader *transparency;
+    const Texture *transparency;
     QVector3D translation;
     QVector3D scale;
 

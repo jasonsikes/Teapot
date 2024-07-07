@@ -10,11 +10,11 @@
 struct TriangleGroup : public Shape
 {
     float indexOfRefraction;
-    const Shader *transparency;
+    const Texture *transparency;
 
-    const Texture *texture;
     const Shader *shader;
-    const Shader *reflection;
+    const Texture *texture;
+    const Texture *reflection;
 
     QList<Triangle> triangles;
     BBox box;
@@ -24,11 +24,11 @@ struct TriangleGroup : public Shape
     bool hit(const Ray & r, float tmin, float tmax, HitRecord & record) const;
     bool shadowHit(const Ray & r, float tmin, float tmax) const;
     void processHit(const Ray & r, HitRecord &record) const;
-    const Texture * getTexture() const;
     const Shader * getShader() const;
-    const Shader * getReflection() const;
+    const Texture * getTexture() const;
+    const Texture * getReflection() const;
     float getIndexOfRefraction() const;
-    const Shader * getTransparency() const;
+    const Texture * getTransparency() const;
 
 
 

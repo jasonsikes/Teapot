@@ -4,8 +4,8 @@
 Contains the fundamental classes and functions that define the basic operations of ray tracing, such as ray generation, intersection tests, and color calculations.
 Example files: Ray.h, Scene.h, Camera.h
 2. materials:
-Holds classes that define material properties, such as diffuse, specular, transparency, and texture mapping.
-Example files: Material.h, Texture.h
+Holds classes that define material properties, such as diffuse, specular, transparency, and shader mapping.
+Example files: Material.h, Shader.h
 3. math:
 Dedicated to mathematical utilities and functions used across the raytracer, like vector operations, transformations, and geometric utilities.
 Example files: Vector3.h, Matrix4x4.h
@@ -18,9 +18,9 @@ Example files: Light.h, PointLight.h
 6. utils:
 For utility functions and classes that assist in operations like logging, debugging, file handling, or other helper functions.
 Example files: Logger.h, FileLoader.h
-7. shaders:
-If implementing shader-like functionality or programmable aspects of the ray tracing process, this folder can contain such implementations.
-Example files: Shader.h, PhongShader.h
+7. textures:
+If implementing texture-like functionality or programmable aspects of the ray tracing process, this folder can contain such implementations.
+Example files: Texture.h, PhongTexture.h
 tests:
 Contains unit tests or other testing scripts specific to the ray tracing algorithms and functionalities.
 Example files: RaytracerTests.cpp
@@ -36,7 +36,7 @@ Raytracer/
 │
 ├── Materials/
 │   ├── Material.h
-│   ├── Texture.h
+│   ├── Shader.h
 │   └── ...
 │
 ├── Math/
@@ -54,9 +54,9 @@ Raytracer/
 │   ├── FileLoader.h
 │   └── ...
 │
-├── Shaders/
-│   ├── Shader.h
-│   ├── PhongShader.h
+├── Textures/
+│   ├── Texture.h
+│   ├── PhongTexture.h
 │   ├── Light.h
 │   └── ...
 │
