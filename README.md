@@ -31,7 +31,7 @@ Their locations are sort of hardcoded in the source code.
 
 ## A note about the bunny:
 
-Stanford provides a bunny model at several different resolutions. I don't know how or why, but the bunny model is not "closed". I manually closed up the bunny model. (Naturally, I chose the bunny with the lowest triangle count). This was necessary in order to use the Winged Edge data structure for surface subdivision.
+[Stanford provides a bunny model](https://graphics.stanford.edu/data/3Dscanrep/) at several different resolutions. I don't know how or why, but the bunny model is not "closed". I manually closed up the bunny model. (Naturally, I chose the bunny with the lowest triangle count). This was necessary in order to use the Winged Edge data structure for surface subdivision in [MeshViewer](https://github.com/jasonsikes/MeshViewer).
 
 And that is why the bunny looks so rough.
 
