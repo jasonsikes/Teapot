@@ -9,25 +9,33 @@ Teapot began as an Objective-C++ Cocoa application for a project in Advanced Com
 
 ## How to Build
 
-1. Install Qt framework. This was built using Qt 6.5.
+1. Install Qt framework. (I used Qt 6.5.)
 2. Open the project in Qt Creator.
 3. Build the project.
 
 ## How to Use
 
-The Teapot executable expects to find three data files in the project directory.\* If the project directory is moved, the executable will need to be recompiled.
+The Teapot executable expects to find three data files in the project directory:
 
-\* The three files are: bunny_surface0.norm, teapot_surface0.norm, and earth_2k.jpg.
+1. bunny_surface0.norm
+2. teapot_surface0.norm
+3. earth_2k.jpg
+
+Their locations are sort of hardcoded in the source code.
 
 1. Press the "Begin" button to start rendering.
 2. The rendered image will be displayed in the `RenderView` widget.
 3. Press the "Cancel" button to cancel the rendering process.
-4. After rendering has finished, you can click on the image to request debug rendering of a specific pixel, or:
+4. After rendering has finished, you can click on the image to trigger a debug rendering of a specific pixel, or:
 5. Press the "Save" button to save the rendered image.
+
+## A note about the bunny:
+
+Stanford provides a bunny model at several different resolutions. I don't know how or why, but the bunny model is not "closed". I manually closed up the bunny model. (Naturally, I chose the bunny with the lowest triangle count). This was necessary in order to use the Winged Edge data structure for surface subdivision.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is released under the MIT License.
 
 ## Acknowledgements
 
